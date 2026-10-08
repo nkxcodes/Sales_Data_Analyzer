@@ -51,6 +51,35 @@ def main():
     print()
     print(f'Average quantity per order: {average_quantity_per_order}')
 
+    print()
+    print('========== PRODUCTS ANALYSIS ==========')
+
+    total_quantity_sold_for_each_product = df.groupby('Product')['Quantity'].sum()
+    df['Sales'] = df['Quantity'] * df['Unit_Price']
+    total_sales_for_each_product = df.groupby('Product')['Sales'].sum()
+    best_selling_product_by_quantity = total_quantity_sold_for_each_product.idxmax()
+    best_selling_product_by_revenue = total_sales_for_each_product.idxmax()
+    lowest_selling_product = total_quantity_sold_for_each_product.idxmin()
+
+    print()
+    print('Total quantity sold for each product: ')
+    print()
+    print(total_quantity_sold_for_each_product)
+
+    print()
+    print('Total sales for each product: ')
+    print()
+    print(total_sales_for_each_product)
+
+    print()
+    print(f'Best selling product by quantity: {best_selling_product_by_quantity}')
+
+    print()
+    print(f'Best selling product by revenue: {best_selling_product_by_revenue}')
+
+    print()
+    print(f'Lowest selling product: {lowest_selling_product}')
+
 
 if __name__ == "__main__":
     main()
