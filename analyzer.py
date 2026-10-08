@@ -153,5 +153,20 @@ def main():
     print()
     print(f'Most commonly used payment method: {most_commonly_used_payment_method}')
 
+    print()
+    print('========== SORTING ==========')
+
+    top_products_by_sales = df.sort_values('Sales', ascending=False)
+    top_5_products = top_products_by_sales.head()
+
+    print()
+    print('Top products by sales: ')
+    print()
+    print(top_products_by_sales)
+
+    print()
+    print('Top 5 products: ')
+    print()
+    print(top_5_products)
 if __name__ == "__main__":
     main()
