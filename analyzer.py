@@ -33,8 +33,10 @@ def main():
     print('========== OVERALL ANALYSIS ==========')
     total_number_of_orders = df['Order_ID'].count()
     total_quantity_of_products_sold = df['Quantity'].sum()
-    average_order_value = df['Sales'].mean()
-    average_quantity_per_order = df['Quantity'].mean()
+    df['Sales'] = df['Quantity'] * df['Unit_Price']
+    total_sales = df['Sales'].sum()
+    average_order_value = df['Sales'].mean().round(2)
+    average_quantity_per_order = df['Quantity'].mean().round(2)
 
     print()
     print(f'Total number of orders: {total_number_of_orders}')
@@ -43,7 +45,7 @@ def main():
     print(f'Total quantity of products sold: {total_quantity_of_products_sold}')
 
     print()
-    print(f'Total sales: {total_quantity_of_products_sold}')
+    print(f'Total sales: {total_sales}')
 
     print()
     print(f'Average order value: {average_order_value}')
