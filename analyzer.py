@@ -29,5 +29,28 @@ def main():
 
     df['Sales'] = df['Quantity'] * df['Unit_Price']
 
+    print()
+    print('========== OVERALL ANALYSIS ==========')
+    total_number_of_orders = df['Order_ID'].count()
+    total_quantity_of_products_sold = df['Quantity'].sum()
+    average_order_value = df['Unit_Price'].mean()
+    average_quantity_per_order = df['Quantity'].mean()
+
+    print()
+    print(f'Total number of orders: {total_number_of_orders}')
+
+    print()
+    print(f'Total quantity of products sold: {total_quantity_of_products_sold}')
+
+    print()
+    print(f'Total sales: {total_quantity_of_products_sold}')
+
+    print()
+    print(f'Average order value: {average_order_value}')
+
+    print()
+    print(f'Average quantity per order: {average_quantity_per_order}')
+
+
 if __name__ == "__main__":
     main()
