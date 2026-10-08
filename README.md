@@ -17,7 +17,6 @@ The analyzer looks at things such as:
 * Best-selling products
 * Daily sales
 * Highest and lowest sales dates
-* Customer spending
 * Payment methods
 * Top 5 products
 
