@@ -80,6 +80,36 @@ def main():
     print()
     print(f'Lowest selling product: {lowest_selling_product}')
 
+    print()
+    print('========== CATEGORIES ANALYSIS ==========')
+
+    number_of_orders_per_category =  df.groupby('Category')['Quantity'].sum()
+    total_sales_by_category = df.groupby('Category')['Sales'].sum()
+    quantity_sold_by_category = df.groupby('Category')['Quantity'].sum()
+    category_with_highest_sales = total_sales_by_category.idxmax()
+    category_with_lowest_sales = total_sales_by_category.idxmin()
+
+    print()
+    print('Number of orders per category: ')
+    print()
+    print(number_of_orders_per_category)
+
+    print()
+    print('Total sales by category: ')
+    print()
+    print(total_sales_by_category)
+
+    print()
+    print('Quantity sold by category: ')
+    print()
+    print(quantity_sold_by_category)
+
+    print()
+    print(f'Category with highest sales: {category_with_highest_sales}')
+
+    print()
+    print(f'Category with lowest sales: {category_with_lowest_sales}')
+
 
 if __name__ == "__main__":
     main()
