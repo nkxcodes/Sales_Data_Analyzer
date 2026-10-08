@@ -133,5 +133,25 @@ def main():
     print()
     print(f'Average daily sales: {average_daily_sales}')
 
+    print()
+    print('========== PAYMENT ANALYSIS ==========')
+
+    number_of_transactions_by_payment_method = df.groupby('Payment_Method')['Order_ID'].count()
+    sales_by_payment_method = df.groupby('Payment_Method')['Sales'].sum()
+    most_commonly_used_payment_method = number_of_transactions_by_payment_method.idxmax()
+
+    print()
+    print('Number of transactions by payment method: ')
+    print()
+    print(number_of_transactions_by_payment_method)
+
+    print()
+    print('Sales by payment method: ')
+    print()
+    print(sales_by_payment_method)
+
+    print()
+    print(f'Most commonly used payment method: {most_commonly_used_payment_method}')
+
 if __name__ == "__main__":
     main()
