@@ -110,6 +110,28 @@ def main():
     print()
     print(f'Category with lowest sales: {category_with_lowest_sales}')
 
+    print()
+    print('========== TIME-BASED ANALYSIS ==========')
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    sales_on_each_date = df.groupby('Date')['Sales'].sum()
+    highest_sales_date = sales_on_each_date.idxmax()
+    lowest_sales_date = sales_on_each_date.idxmin()
+    average_daily_sales = sales_on_each_date.mean().round(2)
+
+    print()
+    print('Sales on each date: ')
+    print()
+    print(sales_on_each_date)
+
+    print()
+    print(f'Highest sales date: {highest_sales_date}')
+
+    print()
+    print(f'Lowest sales date: {lowest_sales_date}')
+
+    print()
+    print(f'Average daily sales: {average_daily_sales}')
 
 if __name__ == "__main__":
     main()
