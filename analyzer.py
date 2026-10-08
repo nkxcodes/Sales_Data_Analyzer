@@ -33,7 +33,7 @@ def main():
     print('========== OVERALL ANALYSIS ==========')
     total_number_of_orders = df['Order_ID'].count()
     total_quantity_of_products_sold = df['Quantity'].sum()
-    average_order_value = df['Unit_Price'].mean()
+    average_order_value = df['Sales'].mean()
     average_quantity_per_order = df['Quantity'].mean()
 
     print()
@@ -156,7 +156,7 @@ def main():
     print()
     print('========== SORTING ==========')
 
-    top_products_by_sales = df.sort_values('Sales', ascending=False)
+    top_products_by_sales = df.groupby('Product')['Sales'].sum().sort_values(ascending=False)
     top_5_products = top_products_by_sales.head()
 
     print()
@@ -168,5 +168,40 @@ def main():
     print('Top 5 products: ')
     print()
     print(top_5_products)
+
+    print()
+    print('========== VISUALIZATIONS ==========')
+
+    plt.subplot(2, 2, 1)
+    x = total_sales_by_category.index
+    y = total_sales_by_category.values
+
+    plt.bar(x, y, color='steelblue')
+    plt.title('Sales by Category')
+    plt.xlabel('Category')
+    plt.ylabel('Sales')
+
+    plt.subplot(2, 2, 2)
+    x2 = sales_on_each_date.index
+    y2 = sales_on_each_date.values
+
+    plt.plot(x2, y2, color='steelblue')
+
+    plt.subplot(2, 2, 3)
+    x3 = top_5_products.index
+    y3 = top_5_products.values
+
+    plt.bar(x3, y3, color='steelblue')
+
+    plt.subplot(2, 2, 4)
+    x4 = number_of_transactions_by_payment_method.index
+    y4 = number_of_transactions_by_payment_method.values
+
+    plt.bar(x4, y4, color='steelblue')
+
+    plt.tight_layout()
+    plt.show()
+
+
 if __name__ == "__main__":
     main()
